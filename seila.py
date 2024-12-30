@@ -47,3 +47,4 @@ try:
     print(resposta)
 except ValueError:
     print("Por favor, insira valores válidos para idade, peso e altura.")
+    
