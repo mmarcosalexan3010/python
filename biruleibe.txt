@@ -1,0 +1,9 @@
+1- Logica da programação
+
+2- Algoritmo ( Passo a passo, loopings, ifs e etc. )
+
+3-  Abstração
+
+4- Estrutura de dados
+
+5- Linguagem de tua escolha
