@@ -1,3 +1,7 @@
+import tkinter as tk
+from tkinter import messagebox
+
+
 def avaliar_saude(idade, peso, altura):
     # Avaliação baseada em idade, peso e altura
     if 10 <= idade <= 14:
@@ -38,13 +42,39 @@ def avaliar_saude(idade, peso, altura):
     else:
         return "Não temos dados para essa faixa etária."
 
-# Solicitando idade, peso e altura da pessoa
-try:
-    idade = int(input("Qual é a sua idade? "))
-    peso = float(input("Qual é o seu peso em kg? "))
-    altura = float(input("Qual é a sua altura em metros (ex: 1.75)? "))
-    resposta = avaliar_saude(idade, peso, altura)
-    print(resposta)
-except ValueError:
-    print("Por favor, insira valores válidos para idade, peso e altura.")
-    
+
+def avaliar():
+    try:
+        idade = int(entry_idade.get())
+        peso = float(entry_peso.get())
+        altura = float(entry_altura.get())
+        resultado = avaliar_saude(idade, peso, altura)
+        messagebox.showinfo("Resultado", resultado)
+    except ValueError:
+        messagebox.showerror("Erro", "Por favor, insira valores válidos para idade, peso e altura.")
+
+
+# Criando a interface com tkinter
+janela = tk.Tk()
+janela.title("Avaliador de Saúde")
+janela.geometry("300x300")
+
+# Labels e entradas
+tk.Label(janela, text="Idade:").pack(pady=5)
+entry_idade = tk.Entry(janela)
+entry_idade.pack(pady=5)
+
+tk.Label(janela, text="Peso (kg):").pack(pady=5)
+entry_peso = tk.Entry(janela)
+entry_peso.pack(pady=5)
+
+tk.Label(janela, text="Altura (m):").pack(pady=5)
+entry_altura = tk.Entry(janela)
+entry_altura.pack(pady=5)
+
+# Botão para avaliar
+btn_avaliar = tk.Button(janela, text="Avaliar Saúde", command=avaliar)
+btn_avaliar.pack(pady=20)
+
+# Rodando o loop principal
+janela.mainloop()
